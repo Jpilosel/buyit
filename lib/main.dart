@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+
+import 'screen/login_screen.dart';
 import 'package:buyit/Screen/Signup_screen.dart';
 import 'package:buyit/Screen/account_screen.dart';
 import 'package:buyit/Screen/cart_screen.dart';
@@ -6,9 +9,6 @@ import 'package:buyit/Screen/search_screen.dart';
 import 'package:buyit/Screen/shop_screen.dart';
 import 'package:buyit/constants/routes_constants.dart';
 import 'package:buyit/screen/product_screen.dart';
-import 'package:flutter/material.dart';
-
-import 'screen/login_screen.dart';
 
 void main() => runApp(MyApp());
 
