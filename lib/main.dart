@@ -1,14 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'screen/register_screen.dart';
-import 'screen/login_screen.dart';
-import 'screen/account_screen.dart';
-import 'screen/cart_screen.dart';
-import 'screen/checkout_screen.dart';
-import 'screen/search_screen.dart';
-import 'screen/shop_screen.dart';
+import 'screen/screen.dart';
 import 'constants/routes_constants.dart';
-import 'screen/product_screen.dart';
 
 void main() => runApp(ByItApp());
 
