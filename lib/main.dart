@@ -1,32 +1,32 @@
 import 'package:flutter/material.dart';
 
+import 'screen/register_screen.dart';
 import 'screen/login_screen.dart';
-import 'package:buyit/Screen/Signup_screen.dart';
-import 'package:buyit/Screen/account_screen.dart';
-import 'package:buyit/Screen/cart_screen.dart';
-import 'package:buyit/Screen/checkout_screen.dart';
-import 'package:buyit/Screen/search_screen.dart';
-import 'package:buyit/Screen/shop_screen.dart';
-import 'package:buyit/constants/routes_constants.dart';
-import 'package:buyit/screen/product_screen.dart';
+import 'screen/account_screen.dart';
+import 'screen/cart_screen.dart';
+import 'screen/checkout_screen.dart';
+import 'screen/search_screen.dart';
+import 'screen/shop_screen.dart';
+import 'constants/routes_constants.dart';
+import 'screen/product_screen.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(ByItApp());
 
-class MyApp extends StatelessWidget {
+class ByItApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'BuyIt',
+      title: 'BuyItApp',
       routes: {
-        RoutesConstant.account: (context) => AccountScreen(),
-        RoutesConstant.cart: (context) => CartScreen(),
-        RoutesConstant.checkout: (context) => CheckoutScreen(),
-        RoutesConstant.login: (context) => LoginScreen(),
-        RoutesConstant.product: (context) => ProductScreen(),
-        RoutesConstant.search: (context) => SearchScreen(),
-        RoutesConstant.shop: (context) => ShopScreen(),
-        RoutesConstant.singup: (context) => SignupScreen(),
+        RoutesConstants.account: (context) => AccountScreen(),
+        RoutesConstants.cart: (context) => CartScreen(),
+        RoutesConstants.checkout: (context) => CheckoutScreen(),
+        RoutesConstants.login: (context) => LoginScreen(),
+        RoutesConstants.product: (context) => ProductScreen(),
+        RoutesConstants.search: (context) => SearchScreen(),
+        RoutesConstants.shop: (context) => ShopScreen(),
+        RoutesConstants.register: (context) => RegisterScreen(),
       },
       home: LoginScreen(),
     );

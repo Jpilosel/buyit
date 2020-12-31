@@ -1,6 +1,4 @@
-import 'dart:async';
-
-class RoutesConstant {
+class RoutesConstants {
   static const String login = '/';
   static const String account = '/account';
   static const String cart = '/cart';
@@ -8,5 +6,5 @@ class RoutesConstant {
   static const String product = '/product';
   static const String search = '/search';
   static const String shop = '/shop';
-  static const String singup = '/singup';
+  static const String register = '/register';
 }
