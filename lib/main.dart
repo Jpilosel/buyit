@@ -1,12 +1,18 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'screen/screen.dart';
 import 'constants/routes_constants.dart';
 
-void main() => runApp(ByItApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(ByItApp());
+}
 
 class ByItApp extends StatelessWidget {
-  // This widget is the root of your application.
+  final Future<FirebaseApp> _initialization = Firebase.initializeApp();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
