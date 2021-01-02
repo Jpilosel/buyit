@@ -17,6 +17,7 @@ class ByItApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'BuyItApp',
+      initialRoute: RoutesConstants.register,
       routes: {
         RoutesConstants.account: (context) => AccountScreen(),
         RoutesConstants.cart: (context) => CartScreen(),
@@ -27,7 +28,7 @@ class ByItApp extends StatelessWidget {
         RoutesConstants.shop: (context) => ShopScreen(),
         RoutesConstants.register: (context) => RegisterScreen(),
       },
-      home: LoginScreen(),
+      theme: ThemeData.dark(),
     );
   }
 }
