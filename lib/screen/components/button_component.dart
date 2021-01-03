@@ -19,7 +19,7 @@ class ComponentButton extends StatelessWidget {
         color: Colors.orange[600],
         successColor: Colors.orange[500],
         duration: const Duration(seconds: 1),
-        child: Text('Se connecter!', style: TextStyle(color: Colors.white)),
+        child: Text(buttonName, style: TextStyle(color: Colors.white)),
         controller: controller,
         onPressed: onPressed,
       ),

@@ -17,7 +17,10 @@ class RegisterScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double _fontSizeTitle = MediaQuery.of(context).size.height * 0.13;
+    final MediaQueryData _device = MediaQuery.of(context);
+    final double _fontSizeTitle = _device.orientation == Orientation.portrait
+        ? _device.size.height * 0.10
+        : _device.size.height * 0.05;
     String _email = "";
     String _password = "";
 
@@ -111,7 +114,8 @@ class RegisterScreen extends StatelessWidget {
                             .then((_) => Navigator.pushNamedAndRemoveUntil(
                                 context,
                                 RoutesConstants.shop,
-                                (route) => false));
+                                (route) => false))
+                            .catchError((onError) {});
                       } else {
                         _btnController.error();
                       }
