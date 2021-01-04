@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -5,15 +7,24 @@ class ShopController {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
   QuerySnapshot _docs;
   DocumentSnapshot _lastdoc;
+
+  StreamController<QuerySnapshot> _streamController =
+      StreamController<QuerySnapshot>();
+
+  get getProductStream => _streamController.stream;
+
+  bool noMoreProd = false;
   static const _maxProductLoading = 2;
   static const String _collectionFS = "products";
   static const String _promoFieldFS = "special-offer";
-  bool noMoreProd = false;
 
-  Future<QuerySnapshot> getPromo() async {
+  void getPromo() async {
     if (noMoreProd) {
       return null;
     }
+    // else {
+    //   noMoreProd = true;
+    // }
     if (_lastdoc == null) {
       _docs = await _db
           .collection(_collectionFS)
@@ -29,8 +40,8 @@ class ShopController {
           .get();
     }
     if (_docs.docs.isNotEmpty) {
+      _streamController.add(_docs);
       _lastdoc = _docs.docs.last;
     }
-    return _docs;
   }
 }

@@ -8,13 +8,12 @@ class ShopScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _shopController = ShopController();
-
+    _shopController.getPromo();
     return Scaffold(
-      body: FutureBuilder(
-        future: _shopController.getPromo(),
+      body: StreamBuilder(
+        stream: _shopController.getProductStream,
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-          if (!snapshot.hasData &&
-              snapshot.connectionState == ConnectionState.done) {
+          if (!snapshot.hasData) {
             return CircularProgressIndicator();
           }
           return ListView.builder(
