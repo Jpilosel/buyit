@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:buyit/screen/components/error_snacbar_component.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 
 import 'package:buyit/constants/routes_constants.dart';
