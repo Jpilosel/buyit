@@ -9,8 +9,8 @@ class ComponentErrorSnacBar {
     String _message = "";
 
     switch (errorCode) {
-      case "ERROR_USER_NOT_FOUND":
-      case "ERROR_INVALID_EMAIL":
+      case "user-not-found":
+      case "invalid-email":
       case "ERROR_WRONG_PASSWORD":
         _message = "Vos identifiants sont incorrects.";
         break;

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 import 'package:buyit/constants/routes_constants.dart';
 import 'package:buyit/screen/components/button_component.dart';
-import 'package:buyit/screen/components/error_dialogComponent.dart';
 import 'package:buyit/screen/components/textformfield_component.dart';
 import 'package:flutter/services.dart';
 
@@ -79,8 +78,12 @@ class LoginScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 20.0),
                   ComponentButton(
+                    onReset: () {
+                      FocusScope.of(context).unfocus();
+                    },
                     buttonName: "Se connecter",
                     onPressed: () async {
+                      FocusScope.of(context).unfocus(); // ferme me clavier
                       if (_formKey.currentState.validate()) {
                         _btnController.success();
                         _formKey.currentState.save();
@@ -89,6 +92,9 @@ class LoginScreen extends StatelessWidget {
                               email: _email,
                               password: _password,
                             )
+                            .then((value) {
+                              return _btnController.success();
+                            })
                             .then(
                               (_) => Navigator.pushNamedAndRemoveUntil(
                                 context,
@@ -96,16 +102,16 @@ class LoginScreen extends StatelessWidget {
                                 (route) => false,
                               ),
                             )
-                            .catchError((PlatformException error) {
-                          _scaffoldK.currentState.showSnackBar(
-                              ComponentErrorSnacBar(error.code).build());
-                        });
+                            .catchError((error) {
+                              _btnController.error();
+                              _scaffoldK.currentState.showSnackBar(
+                                  ComponentErrorSnacBar(error.code).build());
+                            });
                       }
+                      _btnController.error();
                     },
                     controller: _btnController,
                   ),
-                  FlatButton(
-                      child: Text("Reset"), onPressed: _btnController.reset),
                 ],
               ),
             ),
