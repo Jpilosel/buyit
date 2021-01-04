@@ -19,7 +19,7 @@ class ByItApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'BuyItApp',
-      initialRoute: RoutesConstants.login,
+      initialRoute: RoutesConstants.shop,
       routes: {
         RoutesConstants.account: (context) => AccountScreen(),
         RoutesConstants.cart: (context) => CartScreen(),
