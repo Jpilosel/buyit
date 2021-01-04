@@ -13,6 +13,10 @@ class ShopScreen extends StatelessWidget {
       body: FutureBuilder(
         future: _shopController.getPromo(),
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if (!snapshot.hasData &&
+              snapshot.connectionState == ConnectionState.done) {
+            return CircularProgressIndicator();
+          }
           return ListView.builder(
             itemCount: snapshot.data.docs.length,
             itemBuilder: (context, item) {
