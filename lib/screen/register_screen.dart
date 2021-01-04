@@ -1,12 +1,13 @@
+import 'package:flutter/material.dart';
+
+import 'package:google_fonts/google_fonts.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:rounded_loading_button/rounded_loading_button.dart';
+
+import 'package:buyit/constants/global_constant.dart';
 import 'package:buyit/constants/routes_constants.dart';
 import 'package:buyit/screen/components/button_component.dart';
 import 'package:buyit/screen/components/textformfield_component.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:string_validator/string_validator.dart' as validate;
-import 'package:flutter/material.dart';
-
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:rounded_loading_button/rounded_loading_button.dart';
 
 class RegisterScreen extends StatelessWidget {
   final FirebaseAuth _firebase = FirebaseAuth.instance;
@@ -17,10 +18,6 @@ class RegisterScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final MediaQueryData _device = MediaQuery.of(context);
-    final double _fontSizeTitle = _device.orientation == Orientation.portrait
-        ? _device.size.height * 0.10
-        : _device.size.height * 0.05;
     String _email = "";
     String _password = "";
 
@@ -37,7 +34,9 @@ class RegisterScreen extends StatelessWidget {
                 Text(
                   "BuyIt",
                   style: GoogleFonts.satisfy(
-                      color: Colors.white, fontSize: _fontSizeTitle),
+                    color: Colors.white,
+                    fontSize: GlobalConstant.getFontSizeTitle(context),
+                  ),
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(
@@ -51,15 +50,8 @@ class RegisterScreen extends StatelessWidget {
                 Container(
                   child: ComponentTextFormField(
                     hinText: "Adresse email",
-                    validator: (email) {
-                      if (!validate.isEmail(email)) {
-                        return "Merci d'entrer une adresse email correcte.";
-                      }
-                      return null;
-                    },
-                    onSaved: (emailSaved) {
-                      _email = emailSaved.trim();
-                    },
+                    validator: GlobalConstant.emailValidator,
+                    onSaved: (emailSaved) => _email = emailSaved.trim(),
                   ),
                 ),
                 SizedBox(height: 10.0),
@@ -67,19 +59,10 @@ class RegisterScreen extends StatelessWidget {
                   child: ComponentTextFormField(
                     obscureText: true,
                     controller: _passController,
-                    validator: (mdp) {
-                      if (validate.isAlphanumeric(mdp)) {
-                        return "Votre mot de passe doit contenier au moins un symbole, des lettres et des chiffres";
-                      }
-                      if (mdp.length < 6) {
-                        return "Le mot de passe doit contenir au minimum 6 caractères.";
-                      }
-                      return null;
-                    },
+                    validator: GlobalConstant.passwordValidator,
                     hinText: "Mot de passe",
-                    onSaved: (passwordSaved) {
-                      _password = passwordSaved.trim();
-                    },
+                    onSaved: (passwordSaved) =>
+                        _password = passwordSaved.trim(),
                   ),
                 ),
                 SizedBox(height: 10.0),
