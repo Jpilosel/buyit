@@ -33,8 +33,7 @@ class RegisterScreen extends StatelessWidget {
               children: <Widget>[
                 Text(
                   "BuyIt",
-                  style: GoogleFonts.satisfy(
-                    color: Colors.white,
+                  style: GlobalConstant.getFont1(
                     fontSize: GlobalConstant.getFontSizeTitle(context),
                   ),
                   textAlign: TextAlign.center,
@@ -44,7 +43,7 @@ class RegisterScreen extends StatelessWidget {
                 ),
                 Text(
                   'Tout le Hight-Tech au meilleur prix',
-                  style: GoogleFonts.comfortaa(),
+                  style: GlobalConstant.getFont2(),
                   textAlign: TextAlign.center,
                 ),
                 Container(

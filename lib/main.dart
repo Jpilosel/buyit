@@ -1,7 +1,9 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
+import 'package:firebase_core/firebase_core.dart';
+
 import 'screen/screen.dart';
+import 'package:buyit/constants/global_constant.dart';
 import 'constants/routes_constants.dart';
 
 void main() async {
@@ -28,7 +30,7 @@ class ByItApp extends StatelessWidget {
         RoutesConstants.shop: (context) => ShopScreen(),
         RoutesConstants.register: (context) => RegisterScreen(),
       },
-      theme: ThemeData.dark(),
+      theme: GlobalConstant.getDarkTheme(),
     );
   }
 }

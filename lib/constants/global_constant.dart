@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
 
 import 'package:string_validator/string_validator.dart' as validate;
+import 'package:google_fonts/google_fonts.dart';
 
 class GlobalConstant {
+  static TextStyle getFont1({Color color = Colors.white, double fontSize}) {
+    return GoogleFonts.satisfy(color: color, fontSize: fontSize);
+  }
+
+  static TextStyle getFont2({Color color = Colors.white, double fontSize}) {
+    return GoogleFonts.comfortaa(color: color, fontSize: fontSize);
+  }
+
   static double getFontSizeTitle(BuildContext context) {
     final MediaQueryData _device = MediaQuery.of(context);
     final double _fontSizeTitle = _device.orientation == Orientation.portrait
@@ -26,5 +35,13 @@ class GlobalConstant {
       return "Le mot de passe doit contenir au minimum 6 caractères.";
     }
     return null;
+  }
+
+  static ThemeData getDarkTheme() {
+    return ThemeData.dark().copyWith(
+        buttonColor: Colors.orange[600],
+        snackBarTheme: SnackBarThemeData(
+          contentTextStyle: getFont2(color: Colors.white),
+        ));
   }
 }

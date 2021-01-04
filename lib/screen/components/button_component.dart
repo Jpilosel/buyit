@@ -21,8 +21,7 @@ class ComponentButton extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           RoundedLoadingButton(
-            color: Colors.orange[600],
-            successColor: Colors.orange[500],
+            color: Theme.of(context).buttonColor,
             duration: const Duration(seconds: 1),
             child: Text(buttonName, style: TextStyle(color: Colors.white)),
             controller: controller,
